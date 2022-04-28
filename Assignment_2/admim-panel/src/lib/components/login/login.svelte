@@ -1,26 +1,9 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
+import { currentUser } from '$lib/stores';
+	import { User, UserGroup } from '$lib/user';
 
-	enum UserGroup {
-		ADMIN = 'admin',
-		STAFF = 'staff'
-	}
-
-	class User {
-		username: string;
-		password: string;
-		group: UserGroup;
-		constructor(username: string, password: string, group: UserGroup) {
-			this.username = username;
-			this.password = password;
-			this.group = group;
-		}
-		validate(username: string, password: string, group: UserGroup) {
-			return this.username === username && this.password === password && this.group === group;
-		}
-	}
-
-	const users = [
+	const availabeUsers = [
 		new User('Admin', 'Admin', UserGroup.ADMIN),
 		new User('Staff', 'Staff', UserGroup.STAFF)
 	];
@@ -33,11 +16,12 @@
 		const userPassword = formData.get('password') as string;
 		const userGroup = formData.get('userGroup') as UserGroup;
 
-		for (let user of users) {
+		for (let user of availabeUsers) {
 			if (user.validate(userName, userPassword, userGroup)) {
+				currentUser.set(user);
 				loginAttempts = 0;
 				console.log('Login successful');
-				goto(`/${user.group}`);
+				// goto(`/${user.group}`);
 				return;
 			}
 		}
