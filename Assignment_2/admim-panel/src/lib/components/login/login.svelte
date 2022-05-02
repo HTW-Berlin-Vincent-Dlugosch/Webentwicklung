@@ -1,6 +1,5 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
-import { currentUser } from '$lib/stores';
+	import { currentUser } from '$lib/stores';
 	import { User, UserGroup } from '$lib/user';
 
 	const availabeUsers = [
@@ -68,10 +67,10 @@ import { currentUser } from '$lib/stores';
 				required
 				placeholder="Password"
 				class="col-span-2 rounded-md" />
-			<input
+			<button
 				type="submit"
-				value="Log In"
-				class=" col-span-2 cursor-pointer rounded-md bg-blue-300 p-2 hover:bg-blue-400 disabled:cursor-not-allowed disabled:bg-slate-300" />
+				class=" col-span-2 cursor-pointer rounded-md bg-blue-300 p-2 hover:bg-blue-400 disabled:cursor-not-allowed disabled:bg-slate-300"
+				>Log In</button>
 		</fieldset>
 		{#if loginAttempts > 2}
 			<div class="text-center text-red-500">Too many login attempts.</div>

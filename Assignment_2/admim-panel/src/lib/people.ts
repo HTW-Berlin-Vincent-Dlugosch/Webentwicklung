@@ -1,21 +1,61 @@
-interface Staff {
-    id: number;
-    firstName: string;
-    lastName?: string;
-    dob?: Date;
-    gender?: string;
-    email: string;
+interface Person {
+	id: number;
+	firstName: string;
+	lastName: string;
+	dob?: Date;
+	gender: string;
+	email: string;
 }
 
-interface Student extends Staff {
-    department: Department;
+class Staff implements Person {
+	id: number;
+	firstName: string;
+	lastName: string;
+	dob?: Date;
+	gender: string;
+	email: string;
+	constructor(firstName: string, lastName: string, gender: string, email: string, dob?: Date) {
+		this.id = Math.floor(100000 + Math.random() * 900000);
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.dob = dob;
+		this.gender = gender;
+		this.email = email;
+	}
 }
 
-enum Department{
-    MATH = 'Mathematics',
-    CS = 'Computer Science',
-    BIO = 'Biology'
+class Student implements Person {
+	id: number;
+	firstName: string;
+	lastName: string;
+	dob?: Date;
+	gender: string;
+	email: string;
+	department: Departments;
+	constructor(
+		firstName: string,
+		lastName: string,
+		gender: string,
+		email: string,
+		department: Departments,
+		dob?: Date
+	) {
+		this.id = Math.floor(100000 + Math.random() * 900000);
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.dob = dob;
+		this.gender = gender;
+		this.email = email;
+		this.department = department;
+	}
 }
 
+enum Departments {
+	MATH = 'Mathematics',
+	CS = 'Computer Science',
+	BIO = 'Biology'
+}
 
-export type { Student , Staff};
+export { Student, Staff };
+export type { Person };
+export { Departments };
