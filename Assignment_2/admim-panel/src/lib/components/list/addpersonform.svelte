@@ -1,3 +1,9 @@
+<script context="module">
+	import { IdGenerator } from '$lib/people';
+	export const staffIdGenerator = new IdGenerator(1000);
+	export const studentIdGenerator = new IdGenerator(2000);
+</script>
+
 <script lang="ts">
 	import { Departments, Staff, Student } from '$lib/people';
 	import { staff, students } from '$lib/stores';
@@ -11,10 +17,18 @@
 		let email = form.get('email') as string;
 		let department = form.get('department') as Departments;
 		if (department) {
-			let newStudent = new Student(firstName, lastName, gender, email, department, dob);
+			let newStudent = new Student(
+				studentIdGenerator,
+				firstName,
+				lastName,
+				gender,
+				email,
+				department,
+				dob
+			);
 			students.update((m) => m.set(newStudent.id, newStudent));
 		} else {
-			let newStaff = new Staff(firstName, lastName, gender, email, dob);
+			let newStaff = new Staff(staffIdGenerator, firstName, lastName, gender, email, dob);
 			staff.update((m) => m.set(newStaff.id, newStaff));
 		}
 	}

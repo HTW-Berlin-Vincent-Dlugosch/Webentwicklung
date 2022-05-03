@@ -14,8 +14,18 @@ class Staff implements Person {
 	dob?: Date;
 	gender: string;
 	email: string;
-	constructor(firstName: string, lastName: string, gender: string, email: string, dob?: Date) {
-		this.id = Math.floor(100000 + Math.random() * 900000);
+	#idGenerator: IdGenerator;
+
+	constructor(
+		idGenerator: IdGenerator,
+		firstName: string,
+		lastName: string,
+		gender: string,
+		email: string,
+		dob?: Date
+	) {
+		this.#idGenerator = idGenerator;
+		this.id = this.#idGenerator.generateId();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.dob = dob;
@@ -32,7 +42,10 @@ class Student implements Person {
 	gender: string;
 	email: string;
 	department: Departments;
+	#idGenerator: IdGenerator;
+
 	constructor(
+		idGenerator: IdGenerator,
 		firstName: string,
 		lastName: string,
 		gender: string,
@@ -40,7 +53,8 @@ class Student implements Person {
 		department: Departments,
 		dob?: Date
 	) {
-		this.id = Math.floor(100000 + Math.random() * 900000);
+		this.#idGenerator = idGenerator;
+		this.id = this.#idGenerator.generateId();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.dob = dob;
@@ -50,12 +64,22 @@ class Student implements Person {
 	}
 }
 
+class IdGenerator {
+	lastId: number;
+	constructor(start: number) {
+		this.lastId = start;
+	}
+	generateId(): number {
+		this.lastId = this.lastId + 1;
+		return this.lastId;
+	}
+}
+
 enum Departments {
 	MATH = 'Mathematics',
 	CS = 'Computer Science',
 	BIO = 'Biology'
 }
 
-export { Student, Staff };
-export type { Person };
+export { Student, Staff, IdGenerator };
 export { Departments };

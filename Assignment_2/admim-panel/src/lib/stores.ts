@@ -6,4 +6,4 @@ export const currentUser = writable<User>();
 export const students = writable<Map<number, Student>>(new Map());
 export const staff = writable<Map<number, Staff>>(new Map());
 
-// export const people = writable<Map<number, Person>>(new Map());
+

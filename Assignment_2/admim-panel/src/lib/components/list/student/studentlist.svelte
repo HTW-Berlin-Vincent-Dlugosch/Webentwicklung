@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import Addpersonform from '$lib/components/list/addpersonform.svelte';
 	import Listitemperson from '$lib/components/list/listitemperson.svelte';
 	import { students } from '$lib/stores';

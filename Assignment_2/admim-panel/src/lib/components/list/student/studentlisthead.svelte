@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import Stafflisthead from '$lib/components/list/staff/stafflisthead.svelte';
 </script>
 
