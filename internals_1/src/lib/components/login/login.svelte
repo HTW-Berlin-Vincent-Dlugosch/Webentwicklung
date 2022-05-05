@@ -1,4 +1,6 @@
 <script lang="ts">
+import { goto } from '$app/navigation';
+
 	import { currentUser } from '$lib/stores';
 	import { User, UserGroup } from '$lib/user';
 
@@ -20,7 +22,7 @@
 				currentUser.set(user);
 				loginAttempts = 0;
 				console.log('Login successful');
-				// goto(`/${user.group}`);
+				goto(`/${user.group}`);
 				return;
 			}
 		}

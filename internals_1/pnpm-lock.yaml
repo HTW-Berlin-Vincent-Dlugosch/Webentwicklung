@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@faker-js/faker': ^6.3.1
   '@sveltejs/adapter-auto': next
   '@sveltejs/adapter-static': ^1.0.0-next.29
   '@sveltejs/kit': 1.0.0-next.326
@@ -22,6 +23,7 @@ specifiers:
   typescript: ~4.6.4
 
 devDependencies:
+  '@faker-js/faker': 6.3.1
   '@sveltejs/adapter-auto': 1.0.0-next.40
   '@sveltejs/adapter-static': 1.0.0-next.29
   '@sveltejs/kit': 1.0.0-next.326_svelte@3.48.0
@@ -59,6 +61,11 @@ packages:
       strip-json-comments: 3.1.1
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /@faker-js/faker/6.3.1:
+    resolution: {integrity: sha512-8YXBE2ZcU/pImVOHX7MWrSR/X5up7t6rPWZlk34RwZEcdr3ua6X+32pSd6XuOQRN+vbuvYNfA6iey8NbrjuMFQ==}
+    engines: {node: '>=14.0.0', npm: '>=6.0.0'}
     dev: true
 
   /@humanwhocodes/config-array/0.9.5:

@@ -8,12 +8,12 @@ interface Person {
 }
 
 class Staff implements Person {
-	id: number;
-	firstName: string;
-	lastName: string;
-	dob?: Date;
-	gender: string;
-	email: string;
+	id;
+	firstName;
+	lastName;
+	dob?;
+	gender;
+	email;
 	#idGenerator: IdGenerator;
 
 	constructor(
@@ -35,12 +35,12 @@ class Staff implements Person {
 }
 
 class Student implements Person {
-	id: number;
-	firstName: string;
-	lastName: string;
-	dob?: Date;
-	gender: string;
-	email: string;
+	id;
+	firstName;
+	lastName;
+	dob?;
+	gender;
+	email;
 	department: Departments;
 	#idGenerator: IdGenerator;
 
@@ -81,5 +81,17 @@ enum Departments {
 	BIO = 'Biology'
 }
 
-export { Student, Staff, IdGenerator };
+class Course {
+	name: string;
+	students: Student[] = [];
+	constructor(name: string) {
+		this.name = name;
+	}
+
+	addStudent(student: Student) {
+		this.students.push(student);
+	}
+}
+
+export { Course, Student, Staff, IdGenerator };
 export { Departments };

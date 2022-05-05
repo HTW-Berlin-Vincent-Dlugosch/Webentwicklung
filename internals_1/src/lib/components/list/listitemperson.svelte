@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Departments } from '$lib/people';
+	import type { Departments } from '$lib/uni';
 	import { staff, students } from '$lib/stores';
 	export let isStudent: boolean;
 	export let id: number;

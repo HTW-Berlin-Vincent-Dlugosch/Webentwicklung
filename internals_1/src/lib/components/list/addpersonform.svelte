@@ -1,11 +1,11 @@
 <script context="module">
-	import { IdGenerator } from '$lib/people';
+	import { IdGenerator } from '$lib/uni';
 	export const staffIdGenerator = new IdGenerator(1000);
 	export const studentIdGenerator = new IdGenerator(2000);
 </script>
 
 <script lang="ts">
-	import { Departments, Staff, Student } from '$lib/people';
+	import { Departments, Staff, Student } from '$lib/uni';
 	import { staff, students } from '$lib/stores';
 	export let studentForm: boolean;
 	function addPerson(event: SubmitEvent) {
