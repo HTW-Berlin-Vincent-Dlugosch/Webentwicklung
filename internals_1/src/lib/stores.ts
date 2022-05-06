@@ -7,26 +7,25 @@ export const students = writable<Map<number, Student>>(new Map());
 export const staff = writable<Map<number, Staff>>(new Map());
 
 const exampleCourses = [
-	new Course('Mathematics'),
-	new Course('Database'),
-	new Course('Programming')
+  new Course('Mathematics'),
+  new Course('Database'),
+  new Course('Programming')
 ];
 const exampleStudentIdGenerator: IdGenerator = new IdGenerator(3000);
 for (const exampleCourse of exampleCourses) {
-	for (let i = 0; i < 10; i++) {
-		exampleCourse.addStudent(
-			new Student(
-				exampleStudentIdGenerator,
-				faker.name.firstName(),
-				faker.name.lastName(),
-				'N/A',
-				faker.internet.email(),
-				faker.helpers.arrayElement(Object.values(Departments)),
-				undefined
-			)
-		);
-	}
+  for (let i = 0; i < 10; i++) {
+    exampleCourse.addStudent(
+      new Student(
+        exampleStudentIdGenerator,
+        faker.name.firstName(),
+        faker.name.lastName(),
+        'N/A',
+        faker.internet.email(),
+        faker.helpers.arrayElement(Object.values(Departments)),
+        undefined
+      )
+    );
+  }
 }
-
 
 export const courses = writable<Course[]>(exampleCourses);
