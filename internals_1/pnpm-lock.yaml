@@ -2,9 +2,15 @@ lockfileVersion: 5.4
 
 specifiers:
   '@faker-js/faker': ^6.3.1
+<<<<<<< HEAD
   '@sveltejs/adapter-auto': 1.0.0-next.42
   '@sveltejs/adapter-static': 1.0.0-next.30
   '@sveltejs/kit': 1.0.0-next.330
+=======
+  '@sveltejs/adapter-auto': 1.0.0-next.40
+  '@sveltejs/adapter-static': 1.0.0-next.30
+  '@sveltejs/kit': 1.0.0-next.328
+>>>>>>> 7d7603833881353f5e3d64127446ab606a4681ae
   '@tailwindcss/forms': ^0.5.1
   '@typescript-eslint/eslint-plugin': ^5.23.0
   '@typescript-eslint/parser': ^5.23.0
@@ -24,9 +30,15 @@ specifiers:
 
 devDependencies:
   '@faker-js/faker': 6.3.1
+<<<<<<< HEAD
   '@sveltejs/adapter-auto': 1.0.0-next.42
   '@sveltejs/adapter-static': 1.0.0-next.30
   '@sveltejs/kit': 1.0.0-next.330_svelte@3.48.0
+=======
+  '@sveltejs/adapter-auto': 1.0.0-next.40
+  '@sveltejs/adapter-static': 1.0.0-next.30
+  '@sveltejs/kit': 1.0.0-next.328_svelte@3.48.0
+>>>>>>> 7d7603833881353f5e3d64127446ab606a4681ae
   '@tailwindcss/forms': 0.5.1_tailwindcss@3.0.24
   '@typescript-eslint/eslint-plugin': 5.23.0_c63nfttrfhylg3zmgcxfslaw44
   '@typescript-eslint/parser': 5.23.0_hcfsmds2fshutdssjqluwm76uu
@@ -167,8 +179,13 @@ packages:
       esbuild: 0.14.39
     dev: true
 
+<<<<<<< HEAD
   /@sveltejs/kit/1.0.0-next.330_svelte@3.48.0:
     resolution: {integrity: sha512-Wb95D5tOF8BViZuikqzZLAcupdS7TpXtadNPgpEOxKowmkrW8xjRrrfVdPIkNOLqAP1V+gKInmQ/gFYmnv5EjA==}
+=======
+  /@sveltejs/kit/1.0.0-next.328_svelte@3.48.0:
+    resolution: {integrity: sha512-L1RJ7wwLkOgo7aE+JiYppJEtVsSIpGPfgBZtjrS3J0avXVYUSTy+AfXbvjFJxTdk94uuCcTLUk/0vVODFm+Khg==}
+>>>>>>> 7d7603833881353f5e3d64127446ab606a4681ae
     engines: {node: '>=14.13'}
     hasBin: true
     peerDependencies:
