@@ -6,7 +6,7 @@
   import Listitem from '$lib/components/list/listitem.svelte';
   import Studentlisthead from '$lib/components/list/student/studentlisthead.svelte';
   import Deletebutton from '$lib/components/list/deletebutton.svelte';
-  import { Departments } from '$lib/uni';
+  import { Departments, Student } from '$lib/uni';
   import { courses } from '$lib/stores';
   let courseNumber = parseInt($page.params.coursenumber);
 
@@ -56,7 +56,7 @@
     <option value="summer">Summer</option>
   </select>
 </form>
-<Studentlisthead />
+<Listitem properties={Student.getPropertieNames()} bgColor="bg-blue-900 text-white" />
 {#each filteredStudents as person, index}
   <Listitem
     properties={person.getProperties()}
