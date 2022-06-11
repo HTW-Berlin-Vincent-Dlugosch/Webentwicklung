@@ -18,7 +18,7 @@ specifiers:
   svelte: ^3.48.0
   svelte-check: ^2.7.2
   svelte-preprocess: ^4.10.7
-  tailwindcss: ^3.1.0
+  tailwindcss: ^3.1.2
   tslib: ^2.4.0
   typescript: ~4.7.3
 
@@ -27,7 +27,7 @@ devDependencies:
   '@sveltejs/adapter-auto': 1.0.0-next.50
   '@sveltejs/adapter-static': 1.0.0-next.34
   '@sveltejs/kit': 1.0.0-next.350_svelte@3.48.0
-  '@tailwindcss/forms': 0.5.2_tailwindcss@3.1.0
+  '@tailwindcss/forms': 0.5.2_tailwindcss@3.1.2
   '@typescript-eslint/eslint-plugin': 5.27.1_aq7uryhocdbvbqum33pitcm3y4
   '@typescript-eslint/parser': 5.27.1_ud6rd4xtew5bv4yhvkvu24pzm4
   autoprefixer: 10.4.7_postcss@8.4.14
@@ -40,7 +40,7 @@ devDependencies:
   svelte: 3.48.0
   svelte-check: 2.7.2_s3dopqgs4h45owyu2kxaf6kyfu
   svelte-preprocess: 4.10.7_ul755q3dxsprj73ozc64nxdp4y
-  tailwindcss: 3.1.0
+  tailwindcss: 3.1.2
   tslib: 2.4.0
   typescript: 4.7.3
 
@@ -236,13 +236,13 @@ packages:
       - supports-color
     dev: true
 
-  /@tailwindcss/forms/0.5.2_tailwindcss@3.1.0:
+  /@tailwindcss/forms/0.5.2_tailwindcss@3.1.2:
     resolution: {integrity: sha512-pSrFeJB6Bg1Mrg9CdQW3+hqZXAKsBrSG9MAfFLKy1pVA4Mb4W7C0k7mEhlmS2Dfo/otxrQOET7NJiJ9RrS563w==}
     peerDependencies:
       tailwindcss: '>=3.0.0 || >= 3.0.0-alpha.1'
     dependencies:
       mini-svg-data-uri: 1.4.4
-      tailwindcss: 3.1.0
+      tailwindcss: 3.1.2
     dev: true
 
   /@types/json-schema/7.0.11:
@@ -2305,8 +2305,8 @@ packages:
     engines: {node: '>= 8'}
     dev: true
 
-  /tailwindcss/3.1.0:
-    resolution: {integrity: sha512-XzXq31Fj6RizhlFVNLBlDqzs0dXuIEOAknuOcKx2R/IIQbEz5DnngslYY4JNN6e9JkNBjHGm1w2XDABsADg1ng==}
+  /tailwindcss/3.1.2:
+    resolution: {integrity: sha512-yJ6L5s1U5AeS5g7HHy212zdQfjwD426FBfm59pet/JsyneuZuD4C2W7PpJEg4ppisiB21uLqtNagv8KXury3+Q==}
     engines: {node: '>=12.13.0'}
     hasBin: true
     dependencies:
@@ -2426,7 +2426,7 @@ packages:
     dev: true
 
   /util-deprecate/1.0.2:
-    resolution: {integrity: sha1-RQ1Nyfpw3nMnYvvS1KKJgUGaDM8=}
+    resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
     dev: true
 
   /v8-compile-cache/2.3.0:
