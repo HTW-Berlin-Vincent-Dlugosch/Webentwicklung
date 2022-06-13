@@ -6,8 +6,6 @@ node_modules
 .env
 .env.*
 !.env.example
-.DS_Store
-
-# Supabase
-**/supabase/.branches
-**/supabase/.temp
+/test-results/
+/playwright-report/
+/playwright/.cache/
