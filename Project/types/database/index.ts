@@ -126,12 +126,12 @@ export interface definitions {
     created_at?: string;
     /** Format: character varying */
     name?: string;
-    /** Format: smallint */
-    fat?: number;
-    /** Format: smallint */
-    carbohydrates?: number;
-    /** Format: smallint */
-    protein?: number;
+    /** Format: real */
+    fat: number;
+    /** Format: real */
+    carbohydrates: number;
+    /** Format: real */
+    protein: number;
     /**
      * Format: bigint
      * @description Note:
@@ -180,11 +180,11 @@ export interface parameters {
   "rowFilter.Food.created_at": string;
   /** Format: character varying */
   "rowFilter.Food.name": string;
-  /** Format: smallint */
+  /** Format: real */
   "rowFilter.Food.fat": string;
-  /** Format: smallint */
+  /** Format: real */
   "rowFilter.Food.carbohydrates": string;
-  /** Format: smallint */
+  /** Format: real */
   "rowFilter.Food.protein": string;
   /** Format: bigint */
   "rowFilter.Food.bar_code": string;
