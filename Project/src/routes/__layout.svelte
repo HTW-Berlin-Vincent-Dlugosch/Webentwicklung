@@ -4,7 +4,7 @@
   import User from '$lib/components/login/user.svelte';
   import Navbar from '$lib/components/navbar.svelte';
   import { user } from '$lib/store';
-  import çsql from '$lib/postgresclient';
+  // import çsql from '$lib/postgresclient';
   supabase.auth.onAuthStateChange((_, session) => {
     if (_ === 'SIGNED_IN') {
       user.set(true);

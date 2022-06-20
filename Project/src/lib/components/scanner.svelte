@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { supabase } from '$lib/supabaseclient';
   import type { definitions } from 'types/database/index';
   import {
     Html5QrcodeScanner,
@@ -8,29 +7,10 @@
   } from 'html5-qrcode';
   import type { Html5QrcodeResult } from 'html5-qrcode/core';
   import { onMount } from 'svelte';
-  export let promisedFood: Promise<definitions['Food']> | undefined = undefined;
+  import { goto } from '$app/navigation';
   let html5QrcodeScanner: Html5QrcodeScanner;
   let paused = false;
-  async function checkIfProductExists(barCode: string) {
-    let { data: Food, error } = await supabase
-      .from<definitions['Food']>('Food')
-      .select('*')
-      .eq('bar_code', barCode);
-    if (error) {
-      console.log(error);
-      return false;
-    }
-    if (Food?.length === 0) {
-      console.log('Product does not exist');
-      console.log('Creating Product');
-      const { data, error } = await supabase
-        .from('Food')
-        .insert({ bar_code: barCode });
-      if (data) return data[0];
-    }
-
-    if (Food) return Food[0];
-  }
+  
   function resume() {
     paused = false;
     html5QrcodeScanner.resume();
@@ -45,7 +25,13 @@
     ) {
       html5QrcodeScanner.pause();
       paused = true;
-      promisedFood = await checkIfProductExists(decodedText);
+      let res = await fetch('./', {
+        method: 'POST',
+        body: JSON.stringify({ barCode: decodedText })
+      });
+      if (res) {
+        goto('/products/' + decodedText);
+      }
     }
   }
 
@@ -66,7 +52,7 @@
   });
 </script>
 
-<div class="col-span-1 grid max-w-[500px] gap-4">
+<div class="col-span-1 grid w-96 gap-4">
   <div id="reader" />
   {#if paused}
     <button on:click={resume} class="rounded-md border-2 border-orange-100 bg-orange-300 p-2"

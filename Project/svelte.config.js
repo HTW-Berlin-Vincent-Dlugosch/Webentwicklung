@@ -12,6 +12,9 @@ const config = {
   }),
 
   kit: {
+    methodOverride: {
+      allowed: ['PUT', 'PATCH', 'DELETE']
+    },
     adapter: adapter(),
     vite: () => ({
       build: {

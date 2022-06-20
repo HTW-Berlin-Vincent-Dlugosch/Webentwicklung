@@ -1,30 +1,17 @@
 <script lang="ts">
-  import { supabase } from '$lib/supabaseclient';
-
   import type { definitions } from 'types/database';
+  import { page } from '$app/stores';
+  export let product: definitions['Food'];
 
-  export let food: definitions['Food'];
-  console.log(food);
-
-  $: kiloJoules = Math.round(food.protein * 176 + food.carbohydrates * 172 + food.fat * 400);
-
-  async function updateProduct() {
-    const { data, error } = await supabase
-      .from('Food')
-      .update({
-        name: food.name,
-        fat: food.fat,
-        protein: food.protein,
-        carbohydrates: food.carbohydrates
-      })
-      .eq('bar_code', food.bar_code);
-    console.log(data);
-  }
+  $: kiloJoules = Math.round(
+    product.protein * 176 + product.carbohydrates * 172 + product.fat * 400
+  );
 </script>
 
 <form
-  class="col-span-1 grid max-w-lg auto-rows-max grid-cols-2 gap-4"
-  on:submit|preventDefault={updateProduct}>
+  class=" grid auto-rows-max grid-cols-2 gap-4"
+  method="post"
+  action="/products/{$page.params.product}?_method=PATCH">
   <div class="col-span-1 grid">
     <label for="bar_code" class="text-sm">Bar Code</label>
     <input
@@ -32,7 +19,7 @@
       class="rounded-md border-2 border-orange-100 p-2 outline-orange-300"
       type="number"
       name="bar_code"
-      bind:value={food.bar_code}
+      bind:value={product.bar_code}
       disabled />
   </div>
   <div class="col-span-1 grid">
@@ -43,7 +30,7 @@
       class="rounded-md border-2 border-orange-100 p-2 outline-orange-300"
       type="text"
       name="name"
-      bind:value={food.name} />
+      bind:value={product.name} />
   </div>
 
   <div class="col-span-2 mt-4">Nutrients per 100 gram:</div>
@@ -51,7 +38,7 @@
   <div class="col-span-1 grid">
     <label for="fat" class="text-sm">Fat</label>
     <input
-      max={100 - food.protein - food.carbohydrates}
+      max={100 - product.protein - product.carbohydrates}
       min="0"
       step="0.1"
       required
@@ -59,13 +46,13 @@
       class="rounded-md border-2 border-orange-100 p-2 outline-orange-300"
       type="number"
       name="fat"
-      bind:value={food.fat} />
+      bind:value={product.fat} />
   </div>
 
   <div class="col-span-1 grid">
     <label for="carbohydrates" class="text-sm">Carbohydrates</label>
     <input
-      max={100 - food.protein - food.fat}
+      max={100 - product.protein - product.fat}
       min="0"
       step="0.1"
       required
@@ -73,12 +60,12 @@
       class="rounded-md border-2 border-orange-100 p-2 outline-orange-300"
       type="number"
       name="carbohydrates"
-      bind:value={food.carbohydrates} />
+      bind:value={product.carbohydrates} />
   </div>
   <div class="col-span-1 grid">
     <label for="protein" class="text-sm">Protein</label>
     <input
-      max={100 - food.fat - food.carbohydrates}
+      max={100 - product.fat - product.carbohydrates}
       min="0"
       step="0.1"
       required
@@ -86,7 +73,7 @@
       class="rounded-md border-2 border-orange-100 p-2 outline-orange-300"
       type="number"
       name="protein"
-      bind:value={food.protein} />
+      bind:value={product.protein} />
   </div>
   <div class="col-span-1 grid">
     <label for="kilojoules" class="text-sm">Kilojoules</label>
@@ -99,6 +86,12 @@
       name="kilojoules"
       value={kiloJoules} />
   </div>
-
   <button class="rounded-md border-2 bg-orange-300 p-2" type="submit">Update Product</button>
+</form>
+
+<form
+  method="post"
+  action="/products/{$page.params.product}?_method=DELETE"
+  class="grid auto-rows-max grid-cols-2 gap-4">
+  <button type="submit" class="rounded-md border-2 bg-red-500 p-2">Delete</button>
 </form>
