@@ -4,6 +4,7 @@ specifiers:
   '@playwright/test': ^1.22.2
   '@supabase/supabase-js': ^1.35.3
   '@sveltejs/adapter-auto': 1.0.0-next.50
+  '@sveltejs/adapter-node': 1.0.0-next.78
   '@sveltejs/kit': 1.0.0-next.350
   '@tailwindcss/forms': ^0.5.2
   '@typescript-eslint/eslint-plugin': ^5.28.0
@@ -14,6 +15,7 @@ specifiers:
   eslint-plugin-svelte3: ^4.0.0
   html5-qrcode: ^2.2.1
   postcss: ^8.4.14
+  postgres: ^3.2.4
   prettier: ^2.7.1
   prettier-plugin-tailwindcss: ^0.1.11
   svelte: ^3.48.0
@@ -25,7 +27,9 @@ specifiers:
 
 dependencies:
   '@supabase/supabase-js': 1.35.3
+  '@sveltejs/adapter-node': 1.0.0-next.78
   html5-qrcode: 2.2.1
+  postgres: 3.2.4
 
 devDependencies:
   '@playwright/test': 1.22.2
@@ -238,6 +242,12 @@ packages:
       set-cookie-parser: 2.5.0
       tiny-glob: 0.2.9
     dev: true
+
+  /@sveltejs/adapter-node/1.0.0-next.78:
+    resolution: {integrity: sha512-TXB5Ii0z/7o1B05p/YLsS4t+JUHFHWBzFv1U16TKvM3HMbMUJIx+AhpM2WJfDX8HtAyfd1m9OawGoUB+1ed24A==}
+    dependencies:
+      tiny-glob: 0.2.9
+    dev: false
 
   /@sveltejs/adapter-vercel/1.0.0-next.58:
     resolution: {integrity: sha512-Gw76HhwHh2sWP2RN8jwm4jMmO5rnvvWsPsnAhFRCYlIs6gwKf/mNE/CfTQ1nkqKEm15YEYHjKXRVRjI8BniwxA==}
@@ -1431,7 +1441,6 @@ packages:
 
   /globalyzer/0.1.0:
     resolution: {integrity: sha512-40oNTM9UfG6aBmuKxk/giHn5nQ8RVz/SS4Ir6zgzOv9/qC3kKZ9v4etGTcJbEl/NyVQH7FGU7d+X1egr57Md2Q==}
-    dev: true
 
   /globby/11.1.0:
     resolution: {integrity: sha512-jhIXaOzy1sb8IyocaruWSn1TjmnBVs8Ayhcy83rmxNJ8q2uWKCAj3CnJY+KpGSXCueAPc0i05kVvVKtP1t9S3g==}
@@ -1447,7 +1456,6 @@ packages:
 
   /globrex/0.1.2:
     resolution: {integrity: sha512-uHJgbwAMwNFf5mLst7IWLNg14x1CkeqglJb/K3doi4dw6q2IvAAmM/Y81kevy83wP+Sst+nutFTYOGg3d1lsxg==}
-    dev: true
 
   /graceful-fs/4.2.10:
     resolution: {integrity: sha512-9ByhssR2fPVsNZj478qUUbKfmL0+t5BDVyjShtyZZLiK7ZDAArFFfopyOTj0M05wE2tJPisA4iTnnXl2YoPvOA==}
@@ -2035,6 +2043,10 @@ packages:
       source-map-js: 1.0.2
     dev: true
 
+  /postgres/3.2.4:
+    resolution: {integrity: sha512-iscysD+ZlM4A9zj0RS2zo3f4Us4yuov94Yx+p3dE1rEARaBHC8R3/gRq40KEnWp1lxjuFq9EjuAenIUsPaTaDA==}
+    dev: false
+
   /prelude-ls/1.2.1:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
@@ -2515,7 +2527,6 @@ packages:
     dependencies:
       globalyzer: 0.1.0
       globrex: 0.1.2
-    dev: true
 
   /to-regex-range/5.0.1:
     resolution: {integrity: sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==}
