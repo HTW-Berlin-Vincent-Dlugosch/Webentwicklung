@@ -16,12 +16,16 @@ export interface paths {
     get: {
       parameters: {
         query: {
+          bar_code?: parameters["rowFilter.Food.bar_code"];
           created_at?: parameters["rowFilter.Food.created_at"];
           name?: parameters["rowFilter.Food.name"];
           fat?: parameters["rowFilter.Food.fat"];
           carbohydrates?: parameters["rowFilter.Food.carbohydrates"];
           protein?: parameters["rowFilter.Food.protein"];
-          bar_code?: parameters["rowFilter.Food.bar_code"];
+          fibre?: parameters["rowFilter.Food.fibre"];
+          saturated_fat?: parameters["rowFilter.Food.saturated_fat"];
+          salt?: parameters["rowFilter.Food.salt"];
+          sugar?: parameters["rowFilter.Food.sugar"];
           /** Filtering Columns */
           select?: parameters["select"];
           /** Ordering */
@@ -72,12 +76,16 @@ export interface paths {
     delete: {
       parameters: {
         query: {
+          bar_code?: parameters["rowFilter.Food.bar_code"];
           created_at?: parameters["rowFilter.Food.created_at"];
           name?: parameters["rowFilter.Food.name"];
           fat?: parameters["rowFilter.Food.fat"];
           carbohydrates?: parameters["rowFilter.Food.carbohydrates"];
           protein?: parameters["rowFilter.Food.protein"];
-          bar_code?: parameters["rowFilter.Food.bar_code"];
+          fibre?: parameters["rowFilter.Food.fibre"];
+          saturated_fat?: parameters["rowFilter.Food.saturated_fat"];
+          salt?: parameters["rowFilter.Food.salt"];
+          sugar?: parameters["rowFilter.Food.sugar"];
         };
         header: {
           /** Preference */
@@ -92,12 +100,16 @@ export interface paths {
     patch: {
       parameters: {
         query: {
+          bar_code?: parameters["rowFilter.Food.bar_code"];
           created_at?: parameters["rowFilter.Food.created_at"];
           name?: parameters["rowFilter.Food.name"];
           fat?: parameters["rowFilter.Food.fat"];
           carbohydrates?: parameters["rowFilter.Food.carbohydrates"];
           protein?: parameters["rowFilter.Food.protein"];
-          bar_code?: parameters["rowFilter.Food.bar_code"];
+          fibre?: parameters["rowFilter.Food.fibre"];
+          saturated_fat?: parameters["rowFilter.Food.saturated_fat"];
+          salt?: parameters["rowFilter.Food.salt"];
+          sugar?: parameters["rowFilter.Food.sugar"];
         };
         body: {
           /** Food */
@@ -117,27 +129,37 @@ export interface paths {
 }
 
 export interface definitions {
-  /** @description Food and their nutritional values */
   Food: {
-    /**
-     * Format: timestamp with time zone
-     * @default now()
-     */
-    created_at?: string;
-    /** Format: character varying */
-    name?: string;
-    /** Format: real */
-    fat: number;
-    /** Format: real */
-    carbohydrates: number;
-    /** Format: real */
-    protein: number;
     /**
      * Format: bigint
      * @description Note:
      * This is a Primary Key.<pk/>
      */
     bar_code: number;
+    /**
+     * Format: timestamp with time zone
+     * @default now()
+     */
+    created_at?: string;
+    /**
+     * Format: character varying
+     * @default
+     */
+    name: string;
+    /** Format: real */
+    fat: number;
+    /** Format: real */
+    carbohydrates: number;
+    /** Format: real */
+    protein: number;
+    /** Format: real */
+    fibre: number;
+    /** Format: real */
+    saturated_fat: number;
+    /** Format: real */
+    salt: number;
+    /** Format: real */
+    sugar: number;
   };
 }
 
@@ -176,6 +198,8 @@ export interface parameters {
   limit: string;
   /** @description Food */
   "body.Food": definitions["Food"];
+  /** Format: bigint */
+  "rowFilter.Food.bar_code": string;
   /** Format: timestamp with time zone */
   "rowFilter.Food.created_at": string;
   /** Format: character varying */
@@ -186,8 +210,14 @@ export interface parameters {
   "rowFilter.Food.carbohydrates": string;
   /** Format: real */
   "rowFilter.Food.protein": string;
-  /** Format: bigint */
-  "rowFilter.Food.bar_code": string;
+  /** Format: real */
+  "rowFilter.Food.fibre": string;
+  /** Format: real */
+  "rowFilter.Food.saturated_fat": string;
+  /** Format: real */
+  "rowFilter.Food.salt": string;
+  /** Format: real */
+  "rowFilter.Food.sugar": string;
 }
 
 export interface operations {}

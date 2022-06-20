@@ -12,7 +12,7 @@
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
     "lint": "prettier --check --plugin-search-dir=. . && eslint .",
     "format": "prettier --write --plugin-search-dir=. .",
-    "update-types": "npx openapi-typescript \"http://localhost:8000/rest/v1/?apikey=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE\" --output types/database/index.ts"
+    "update-types": "npx openapi-typescript \"https://bdfuxqqzjbhtavckyave.supabase.co/rest/v1/?apikey=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJkZnV4cXF6amJodGF2Y2t5YXZlIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NTUwNjg2MjYsImV4cCI6MTk3MDY0NDYyNn0.3qyLXGVLvFoeK7AwLg30ZCQHm7tJQskXV8aZi3VnEho\" --output types/database/index.ts"
   },
   "devDependencies": {
     "@playwright/test": "^1.22.2",

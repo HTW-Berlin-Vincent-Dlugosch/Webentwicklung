@@ -25,7 +25,7 @@
       console.log('Creating Product');
       const { data, error } = await supabase
         .from('Food')
-        .insert({ bar_code: barCode, fat: 0, protein: 0, carbohydrates: 0 });
+        .insert({ bar_code: barCode });
       if (data) return data[0];
     }
 
