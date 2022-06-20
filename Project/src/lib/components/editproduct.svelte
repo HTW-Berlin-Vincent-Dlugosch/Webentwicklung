@@ -6,7 +6,7 @@
   export let food: definitions['Food'];
   console.log(food);
 
-  $: calories = food.protein * 4 + food.carbohydrates * 4 + food.fat * 9;
+  $: kiloJoules = Math.round(food.protein * 176 + food.carbohydrates * 172 + food.fat * 400);
 
   async function updateProduct() {
     const { data, error } = await supabase
@@ -89,15 +89,15 @@
       bind:value={food.protein} />
   </div>
   <div class="col-span-1 grid">
-    <label for="calories" class="text-sm">Calories</label>
+    <label for="kilojoules" class="text-sm">Kilojoules</label>
     <input
       disabled
       step="0.1"
-      id="calories"
+      id="kilojoules"
       class="rounded-md border-2 border-orange-100 p-2 outline-orange-300"
       type="number"
-      name="calories"
-      value={calories} />
+      name="kilojoules"
+      value={kiloJoules} />
   </div>
 
   <button class="rounded-md border-2 bg-orange-300 p-2" type="submit">Update Product</button>
