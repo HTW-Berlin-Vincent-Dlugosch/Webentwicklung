@@ -2,7 +2,6 @@
   import type { definitions } from 'types/database';
   import { page } from '$app/stores';
   export let product: definitions['Food'];
-
   $: kiloJoules = Math.round(
     product.protein * 176 + product.carbohydrates * 172 + product.fat * 400
   );
@@ -94,4 +93,20 @@
   action="/products/{$page.params.product}?_method=DELETE"
   class="grid auto-rows-max grid-cols-2 gap-4">
   <button type="submit" class="rounded-md border-2 bg-red-500 p-2">Delete</button>
+</form>
+
+<form
+  method="post"
+  action="/products/{$page.params.product}"
+  class="grid auto-rows-max grid-cols-2 gap-4">
+  <div class="col-span-1 grid">
+    <label for="grams" class="text-sm">Grams</label>
+    <input
+      step="0.1"
+      id="grams"
+      class="rounded-md border-2 border-orange-100 p-2 outline-orange-300"
+      type="number"
+      name="grams" />
+  </div>
+  <button type="submit" class="rounded-md border-2 bg-orange-500 p-2">Eat </button>
 </form>
