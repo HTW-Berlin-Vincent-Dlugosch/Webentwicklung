@@ -1,4 +1,4 @@
 import { writable } from 'svelte/store';
-import { supabase } from './supabaseclient';
+import { supabase } from '$lib/supabaseclient';
 
 export const user = writable(supabase.auth.user());
