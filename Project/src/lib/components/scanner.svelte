@@ -1,5 +1,4 @@
 <script lang="ts">
-  import type { definitions } from 'types/database/index';
   import {
     Html5QrcodeScanner,
     Html5QrcodeScanType,
@@ -8,13 +7,9 @@
   import type { Html5QrcodeResult } from 'html5-qrcode/core';
   import { onMount } from 'svelte';
   import { goto } from '$app/navigation';
+  import { page } from '$app/stores';
+
   let html5QrcodeScanner: Html5QrcodeScanner;
-  let paused = false;
-  
-  function resume() {
-    paused = false;
-    html5QrcodeScanner.resume();
-  }
   async function onScanSuccess(decodedText: string, decodedResult: Html5QrcodeResult) {
     // handle the scanned code as you like, for example:
     console.log(`Code matched = ${decodedText}`, decodedResult);
@@ -23,14 +18,13 @@
         decodedResult.result.format?.format === Html5QrcodeSupportedFormats.EAN_8) &&
       decodedText.charAt(0) === '4'
     ) {
-      html5QrcodeScanner.pause();
-      paused = true;
-      let res = await fetch('./', {
+      html5QrcodeScanner.clear();
+      let res = await fetch('./scan', {
         method: 'POST',
         body: JSON.stringify({ barCode: decodedText })
       });
       if (res) {
-        goto('/products/' + decodedText);
+        goto(`/products/${decodedText}?meal=${$page.url.searchParams.get('meal')}`);
       }
     }
   }
@@ -52,10 +46,6 @@
   });
 </script>
 
-<div class="col-span-1 grid w-96 gap-4">
+<div class="col-span-1 grid gap-4 md:max-w-xl">
   <div id="reader" />
-  {#if paused}
-    <button on:click={resume} class="rounded-md border-2 border-orange-100 bg-orange-300 p-2"
-      >Resume Scanning</button>
-  {/if}
 </div>

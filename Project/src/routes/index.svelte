@@ -1,13 +1,16 @@
 <script lang="ts">
-  import type { definitions } from 'types/database/index';
-  import Editproduct from '$lib/components/editproduct.svelte';
-  import Scanner from '$lib/components/scanner.svelte';
-  import Search from '$lib/components/search.svelte';
+  import Datepicker from '$lib/components/datepicker.svelte';
+  import Meal from '$lib/components/meal.svelte';
+import { onMount } from 'svelte';
+  let selectedDate = new Date();
 
-  let promisedFood: Promise<definitions['Food']> | undefined = undefined;
 </script>
 
-<div class="grid grid-cols-2 justify-items-center gap-4">
-  <Scanner />
-  <Search />
+<div class="grid gap-4">
+  <Datepicker bind:selectedDate />
+
+  <Meal {selectedDate} meal="Breakfast" />
+  <Meal {selectedDate} meal="Lunch" />
+  <Meal {selectedDate} meal="Dinner" />
+
 </div>

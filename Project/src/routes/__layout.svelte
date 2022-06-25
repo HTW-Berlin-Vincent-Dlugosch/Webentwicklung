@@ -7,10 +7,10 @@
   // import çsql from '$lib/postgresclient';
   supabase.auth.onAuthStateChange((_, session) => {
     if (_ === 'SIGNED_IN') {
-      user.set(true);
+      user.set(supabase.auth.user());
     }
     if (_ === 'SIGNED_OUT') {
-      user.set(false);
+      user.set(null);
     }
   });
 </script>
@@ -21,7 +21,7 @@
   </div>
 {:else}
   <Navbar />
-  <main class="container mx-auto pt-4">
+  <main class="container mx-auto p-4">
     <slot />
   </main>
 {/if}

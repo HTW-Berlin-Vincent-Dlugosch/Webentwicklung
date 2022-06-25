@@ -126,6 +126,108 @@ export interface paths {
       };
     };
   };
+  "/UserAteFood": {
+    get: {
+      parameters: {
+        query: {
+          user_id?: parameters["rowFilter.UserAteFood.user_id"];
+          food_id?: parameters["rowFilter.UserAteFood.food_id"];
+          created_at?: parameters["rowFilter.UserAteFood.created_at"];
+          meal_id?: parameters["rowFilter.UserAteFood.meal_id"];
+          grams?: parameters["rowFilter.UserAteFood.grams"];
+          meal?: parameters["rowFilter.UserAteFood.meal"];
+          /** Filtering Columns */
+          select?: parameters["select"];
+          /** Ordering */
+          order?: parameters["order"];
+          /** Limiting and Pagination */
+          offset?: parameters["offset"];
+          /** Limiting and Pagination */
+          limit?: parameters["limit"];
+        };
+        header: {
+          /** Limiting and Pagination */
+          Range?: parameters["range"];
+          /** Limiting and Pagination */
+          "Range-Unit"?: parameters["rangeUnit"];
+          /** Preference */
+          Prefer?: parameters["preferCount"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: {
+          schema: definitions["UserAteFood"][];
+        };
+        /** Partial Content */
+        206: unknown;
+      };
+    };
+    post: {
+      parameters: {
+        body: {
+          /** UserAteFood */
+          UserAteFood?: definitions["UserAteFood"];
+        };
+        query: {
+          /** Filtering Columns */
+          select?: parameters["select"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** Created */
+        201: unknown;
+      };
+    };
+    delete: {
+      parameters: {
+        query: {
+          user_id?: parameters["rowFilter.UserAteFood.user_id"];
+          food_id?: parameters["rowFilter.UserAteFood.food_id"];
+          created_at?: parameters["rowFilter.UserAteFood.created_at"];
+          meal_id?: parameters["rowFilter.UserAteFood.meal_id"];
+          grams?: parameters["rowFilter.UserAteFood.grams"];
+          meal?: parameters["rowFilter.UserAteFood.meal"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+    patch: {
+      parameters: {
+        query: {
+          user_id?: parameters["rowFilter.UserAteFood.user_id"];
+          food_id?: parameters["rowFilter.UserAteFood.food_id"];
+          created_at?: parameters["rowFilter.UserAteFood.created_at"];
+          meal_id?: parameters["rowFilter.UserAteFood.meal_id"];
+          grams?: parameters["rowFilter.UserAteFood.grams"];
+          meal?: parameters["rowFilter.UserAteFood.meal"];
+        };
+        body: {
+          /** UserAteFood */
+          UserAteFood?: definitions["UserAteFood"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+  };
 }
 
 export interface definitions {
@@ -160,6 +262,31 @@ export interface definitions {
     salt: number;
     /** Format: real */
     sugar: number;
+  };
+  UserAteFood: {
+    /** Format: uuid */
+    user_id: string;
+    /**
+     * Format: bigint
+     * @description Note:
+     * This is a Foreign Key to `Food.bar_code`.<fk table='Food' column='bar_code'/>
+     */
+    food_id: number;
+    /**
+     * Format: timestamp with time zone
+     * @default now()
+     */
+    created_at?: string;
+    /**
+     * Format: bigint
+     * @description Note:
+     * This is a Primary Key.<pk/>
+     */
+    meal_id: number;
+    /** Format: smallint */
+    grams: number;
+    /** Format: character varying */
+    meal: string;
   };
 }
 
@@ -218,6 +345,20 @@ export interface parameters {
   "rowFilter.Food.salt": string;
   /** Format: real */
   "rowFilter.Food.sugar": string;
+  /** @description UserAteFood */
+  "body.UserAteFood": definitions["UserAteFood"];
+  /** Format: uuid */
+  "rowFilter.UserAteFood.user_id": string;
+  /** Format: bigint */
+  "rowFilter.UserAteFood.food_id": string;
+  /** Format: timestamp with time zone */
+  "rowFilter.UserAteFood.created_at": string;
+  /** Format: bigint */
+  "rowFilter.UserAteFood.meal_id": string;
+  /** Format: smallint */
+  "rowFilter.UserAteFood.grams": string;
+  /** Format: character varying */
+  "rowFilter.UserAteFood.meal": string;
 }
 
 export interface operations {}

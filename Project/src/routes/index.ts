@@ -2,15 +2,14 @@ import { supabase } from '$lib/supabaseclient';
 import type { RequestHandler } from './__types/';
 import type { definitions } from 'types/database';
 
-export const post: RequestHandler = async ({ request }) => {
-  const json = await request.json();
-  const { error, status } = await supabase
-    .from<definitions['Food']>('Food')
-    .insert({ bar_code: json.barCode });
-  if (error) {
-    return { status };
-  }
+export const get: RequestHandler = async ({ request }) => {
+  
+  const { data, error, status } = await supabase
+    .from<definitions['UserAteFood']>('UserAteFood')
+    .select('*')
+    .eq('meal', 'breakfast');
   return {
-    status
+    status,
+    body: { servings: data }
   };
 };

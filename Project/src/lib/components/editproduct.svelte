@@ -1,17 +1,35 @@
 <script lang="ts">
   import type { definitions } from 'types/database';
   import { page } from '$app/stores';
+  import { user } from '$lib/store';
+  import { supabase } from '$lib/supabaseclient';
+  import { goto } from '$app/navigation';
   export let product: definitions['Food'];
   $: kiloJoules = Math.round(
     product.protein * 176 + product.carbohydrates * 172 + product.fat * 400
   );
+
+  async function eat(event: SubmitEvent) {
+    const formData = new FormData(event.currentTarget as HTMLFormElement);
+    const { error, status, data } = await supabase
+      .from<definitions['UserAteFood']>('UserAteFood')
+      .insert({
+        food_id: product.bar_code,
+        meal: $page.url.searchParams.get('meal') as string,
+        grams: parseInt(formData.get('grams') as string),
+        user_id: $user?.id
+      });
+    if (data) {
+      goto($page.url.origin);
+    }
+  }
 </script>
 
 <form
-  class=" grid auto-rows-max grid-cols-2 gap-4"
+  class="grid auto-rows-max gap-4"
   method="post"
-  action="/products/{$page.params.product}?_method=PATCH">
-  <div class="col-span-1 grid">
+  action="/products/{$page.params.product}?_method=PATCH&meal={$page.url.searchParams.get('meal')}">
+  <div class="grid">
     <label for="bar_code" class="text-sm">Bar Code</label>
     <input
       id="bar_code"
@@ -21,7 +39,7 @@
       bind:value={product.bar_code}
       disabled />
   </div>
-  <div class="col-span-1 grid">
+  <div class="grid">
     <label for="name" class="text-sm">Name</label>
     <input
       required
@@ -32,9 +50,9 @@
       bind:value={product.name} />
   </div>
 
-  <div class="col-span-2 mt-4">Nutrients per 100 gram:</div>
+  <div class=" mt-4">Nutrients per 100 gram:</div>
 
-  <div class="col-span-1 grid">
+  <div class="grid">
     <label for="fat" class="text-sm">Fat</label>
     <input
       max={100 - product.protein - product.carbohydrates}
@@ -48,7 +66,7 @@
       bind:value={product.fat} />
   </div>
 
-  <div class="col-span-1 grid">
+  <div class="grid">
     <label for="carbohydrates" class="text-sm">Carbohydrates</label>
     <input
       max={100 - product.protein - product.fat}
@@ -61,7 +79,7 @@
       name="carbohydrates"
       bind:value={product.carbohydrates} />
   </div>
-  <div class="col-span-1 grid">
+  <div class="grid">
     <label for="protein" class="text-sm">Protein</label>
     <input
       max={100 - product.fat - product.carbohydrates}
@@ -74,7 +92,7 @@
       name="protein"
       bind:value={product.protein} />
   </div>
-  <div class="col-span-1 grid">
+  <div class="grid">
     <label for="kilojoules" class="text-sm">Kilojoules</label>
     <input
       disabled
@@ -91,15 +109,14 @@
 <form
   method="post"
   action="/products/{$page.params.product}?_method=DELETE"
-  class="grid auto-rows-max grid-cols-2 gap-4">
+  class="grid auto-rows-max gap-4">
   <button type="submit" class="rounded-md border-2 bg-red-500 p-2">Delete</button>
 </form>
 
-<form
-  method="post"
-  action="/products/{$page.params.product}"
-  class="grid auto-rows-max grid-cols-2 gap-4">
-  <div class="col-span-1 grid">
+<!-- method="post"
+action="/products/{$page.params.product}?meal={$page.url.searchParams.get('meal')}" -->
+<form on:submit|preventDefault={eat} class="grid auto-rows-max gap-4">
+  <div class="grid">
     <label for="grams" class="text-sm">Grams</label>
     <input
       step="0.1"
@@ -108,5 +125,7 @@
       type="number"
       name="grams" />
   </div>
-  <button type="submit" class="rounded-md border-2 bg-orange-500 p-2">Eat </button>
+  <input type="hidden" value={$user?.id} name="userId" />
+  <!-- <input type="hidden" value={$page.url.searchParams.get('meal')} name="meal" /> -->
+  <button type="submit" class="rounded-md border-2 bg-orange-500 p-2">Eat</button>
 </form>

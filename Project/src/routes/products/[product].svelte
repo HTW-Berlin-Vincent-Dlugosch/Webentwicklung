@@ -2,8 +2,6 @@
   import type { definitions } from 'types/database';
   import Editproduct from '$lib/components/editproduct.svelte';
   export let product: definitions['Food'];
-
-  console.log(product);
 </script>
 
 <Editproduct {product} />
