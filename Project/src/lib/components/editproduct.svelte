@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { definitions } from 'types/database';
   import { page } from '$app/stores';
-  import { user } from '$lib/store';
+  import { user } from '$lib/stores/userStore';
   import { supabase } from '$lib/supabaseclient';
   import { goto } from '$app/navigation';
   export let product: definitions['Food'];
