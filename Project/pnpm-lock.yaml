@@ -608,8 +608,8 @@ packages:
     peerDependencies:
       postcss: ^8.1.0
     dependencies:
-      browserslist: 4.20.4
-      caniuse-lite: 1.0.30001355
+      browserslist: 4.21.0
+      caniuse-lite: 1.0.30001359
       fraction.js: 4.2.0
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -646,16 +646,15 @@ packages:
       fill-range: 7.0.1
     dev: true
 
-  /browserslist/4.20.4:
-    resolution: {integrity: sha512-ok1d+1WpnU24XYN7oC3QWgTyMhY/avPJ/r9T00xxvUOIparA/gc+UPUMaod3i+G6s+nI2nUb9xZ5k794uIwShw==}
+  /browserslist/4.21.0:
+    resolution: {integrity: sha512-UQxE0DIhRB5z/zDz9iA03BOfxaN2+GQdBYH/2WrSIWEUrnpzTPJbhqt+umq6r3acaPRTW1FNTkrcp0PXgtFkvA==}
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001355
-      electron-to-chromium: 1.4.159
-      escalade: 3.1.1
+      caniuse-lite: 1.0.30001359
+      electron-to-chromium: 1.4.170
       node-releases: 2.0.5
-      picocolors: 1.0.0
+      update-browserslist-db: 1.0.4_browserslist@4.21.0
     dev: true
 
   /buffer-crc32/0.2.13:
@@ -680,8 +679,8 @@ packages:
     engines: {node: '>= 6'}
     dev: true
 
-  /caniuse-lite/1.0.30001355:
-    resolution: {integrity: sha512-Sd6pjJHF27LzCB7pT7qs+kuX2ndurzCzkpJl6Qct7LPSZ9jn0bkOA8mdgMgmqnQAWLVOOGjLpc+66V57eLtb1g==}
+  /caniuse-lite/1.0.30001359:
+    resolution: {integrity: sha512-Xln/BAsPzEuiVLgJ2/45IaqD9jShtk3Y33anKb4+yLwQzws3+v6odKfpgES/cDEaZMLzSChpIGdbOYtH9MyuHw==}
     dev: true
 
   /chalk/4.1.2:
@@ -883,8 +882,8 @@ packages:
       esutils: 2.0.3
     dev: true
 
-  /electron-to-chromium/1.4.159:
-    resolution: {integrity: sha512-D0NfhJzv5GgN3L7bzy5VUD90yKXnNFdCy+fH6jox+5UyJJSFmDC2d1mUxc9yi3bpTaOA1MJ6BkuVjn+GZTaZwg==}
+  /electron-to-chromium/1.4.170:
+    resolution: {integrity: sha512-rZ8PZLhK4ORPjFqLp9aqC4/S1j4qWFsPPz13xmWdrbBkU/LlxMcok+f+6f8YnQ57MiZwKtOaW15biZZsY5Igvw==}
     dev: true
 
   /emoji-regex/8.0.0:
@@ -2592,6 +2591,17 @@ packages:
     resolution: {integrity: sha512-C0WQT0gezHuw6AdY1M2jxUO83Rjf0HP7Sk1DtXj6j1EwkQNZrHAg2XPWlq62oqEhYvONq5pkC2Y9oPljWToLmQ==}
     engines: {node: '>=4.2.0'}
     hasBin: true
+    dev: true
+
+  /update-browserslist-db/1.0.4_browserslist@4.21.0:
+    resolution: {integrity: sha512-jnmO2BEGUjsMOe/Fg9u0oczOe/ppIDZPebzccl1yDWGLFP16Pa1/RM5wEoKYPG2zstNcDuAStejyxsOuKINdGA==}
+    hasBin: true
+    peerDependencies:
+      browserslist: '>= 4.21.0'
+    dependencies:
+      browserslist: 4.21.0
+      escalade: 3.1.1
+      picocolors: 1.0.0
     dev: true
 
   /uri-js/4.4.1:
