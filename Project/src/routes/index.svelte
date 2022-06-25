@@ -3,17 +3,17 @@
   import Meal from '$lib/components/meal.svelte';
   import { servings } from '$lib/stores/servingStore';
   import { supabase } from '$lib/supabaseclient';
-  import { onMount } from 'svelte';
   import type { definitions } from 'types/database';
 
-  let selectedDate = new Date();
+  let selectedDate: Date;
 
   async function updateServings(date: Date) {
+    if (!date) return;
     date.setHours(0, 0, 0, 0);
     const afterDate = date.toISOString();
     date.setHours(23, 59, 59, 99);
     const beforeDate = date.toISOString();
-    
+
     const { data } = await supabase
       .from<definitions['UserAteFood'] & { Food: definitions['Food'] }>('UserAteFood')
       .select(`*, Food(*)`)

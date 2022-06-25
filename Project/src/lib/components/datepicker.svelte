@@ -1,6 +1,6 @@
 <script lang="ts">
   import Icon from '@iconify/svelte';
-  export let selectedDate: Date;
+  export let selectedDate = new Date();
   function changeDate(numberOfDays: number) {
     selectedDate.setDate(selectedDate.getDate() + numberOfDays);
     selectedDate = selectedDate;
