@@ -3,12 +3,10 @@
   let errorMessage: string | undefined;
 
   async function login(form: FormData) {
-    let { user, error } = await supabase.auth.signIn({
+    const { error } = await supabase.auth.signIn({
       email: form.get('email') as string,
       password: form.get('password') as string
     });
-    console.log(user);
-    console.log(error);
     errorMessage = error?.message;
   }
 </script>

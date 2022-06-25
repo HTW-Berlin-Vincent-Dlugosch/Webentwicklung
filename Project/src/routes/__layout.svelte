@@ -5,7 +5,7 @@
   import Navbar from '$lib/components/navbar.svelte';
   import { user } from '$lib/stores/userStore';
   // import çsql from '$lib/postgresclient';
-  supabase.auth.onAuthStateChange((_, session) => {
+  supabase.auth.onAuthStateChange((_) => {
     if (_ === 'SIGNED_IN') {
       user.set(supabase.auth.user());
     }
@@ -17,7 +17,6 @@
 
 {#if $user}
   <Navbar />
-
   <main class="container mx-auto p-4">
     <slot />
   </main>

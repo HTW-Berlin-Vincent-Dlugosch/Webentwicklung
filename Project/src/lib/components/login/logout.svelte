@@ -2,7 +2,7 @@
   import { supabase } from '$lib/supabaseclient';
 
   async function signOut() {
-    let { error } = await supabase.auth.signOut();
+    const {} = await supabase.auth.signOut();
   }
 </script>
 

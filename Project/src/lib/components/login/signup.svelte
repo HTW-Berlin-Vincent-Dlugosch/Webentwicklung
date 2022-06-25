@@ -3,14 +3,10 @@
   let errorMessage: string | undefined;
 
   async function createUser(form: FormData) {
-    const { user, session, error } = await supabase.auth.signUp({
+    const { error } = await supabase.auth.signUp({
       email: form.get('email') as string,
       password: form.get('password') as string
     });
-
-    console.log(user);
-    console.log(session);
-    console.log(error);
     errorMessage = error?.message;
   }
 </script>
