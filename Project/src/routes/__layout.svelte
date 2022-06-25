@@ -3,7 +3,7 @@
   import { supabase } from '$lib/supabaseclient';
   import User from '$lib/components/login/user.svelte';
   import Navbar from '$lib/components/navbar.svelte';
-  import { user } from '$lib/store';
+  import { user } from '$lib/stores/userStore';
   // import çsql from '$lib/postgresclient';
   supabase.auth.onAuthStateChange((_, session) => {
     if (_ === 'SIGNED_IN') {
@@ -15,13 +15,14 @@
   });
 </script>
 
-{#if !$user}
-  <div class="grid h-screen place-items-center">
-    <User />
-  </div>
-{:else}
+{#if $user}
   <Navbar />
+
   <main class="container mx-auto p-4">
     <slot />
   </main>
+{:else}
+  <div class="grid h-screen place-items-center">
+    <User />
+  </div>
 {/if}
