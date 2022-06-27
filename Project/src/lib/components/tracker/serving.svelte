@@ -2,7 +2,7 @@
   import { supabase } from '$lib/supabaseclient';
   import type { definitions } from 'types/database';
   import { servings } from '$lib/stores/servingStore';
-
+  import Icon from '@iconify/svelte';
   export let serving: definitions['UserAteFood'] & { Food: definitions['Food'] };
 
   async function deleteServing(mealId: number) {
@@ -14,12 +14,12 @@
   }
 </script>
 
-<div class="grid grid-flow-col rounded-md border-2 border-orange-200 p-2">
-  <div>{serving.Food.name}</div>
-  <div class="justify-self-end">{serving.grams}g</div>
+<div class="grid grid-flow-col border-b-2 border-orange-100 py-2">
+  <div class="my-auto">{serving.Food.name}</div>
+  <div class="my-auto justify-self-end">{serving.grams}g</div>
   <button
-    class="justify-self-end rounded-md bg-red-500 p-2"
+    class="justify-self-end rounded-full bg-red-500 p-2"
     on:click={() => deleteServing(serving.meal_id)}
-    >Delete
+    ><Icon width="20" icon="akar-icons:cross" />
   </button>
 </div>
